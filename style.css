@@ -1,1 +1,383 @@
 /* Add your CSS here */
+
+/* Basic page reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /* Prevent horizontal scrolling on small screens */
+  overflow-x: hidden;
+}
+
+/* Make all images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header with background image - covers top half of page */
+header {
+  /* Set height to 50vh (50% of viewport height) for top half */
+  height: 50vh;
+  /* Minimum height to ensure content fits on very small screens */
+  min-height: 400px;
+  
+  /* Add background image */
+  background-image: url('https://4kwallpapers.com/images/wallpapers/intel-processor-3840x1080-9784.jpg');
+  
+  /* Make image cover entire header area */
+  background-size: cover;
+  
+  /* Center the background image */
+  background-position: center;
+  
+  /* Prevent image from repeating */
+  background-repeat: no-repeat;
+  
+  /* Make background image stay fixed on scroll (works better on larger screens) */
+  background-attachment: scroll;
+  
+  /* Center content inside header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Add text color so it's visible on the image */
+  color: white;
+  
+  /* Add a semi-transparent overlay to make text easier to read */
+  position: relative;
+  
+  /* Make sure header fits properly */
+  width: 100%;
+}
+
+/* Add a dark overlay over the background image */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Make sure header content appears above the overlay */
+header > div {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  /* Ensure content doesn't overflow on small screens */
+  max-width: 90%;
+  width: 100%;
+}
+
+/* Make intro text smaller */
+header h1 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+  /* Use responsive font sizing */
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+header p {
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 0 auto;
+  /* Use responsive font sizing */
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  line-height: 1.5;
+}
+
+/* Make Intel logo responsive */
+header img {
+  max-width: 150px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+/* Responsive media queries for different devices */
+
+/* Tablets and small laptops */
+@media (max-width: 768px) {
+  header {
+    min-height: 350px;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  header p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  header {
+    min-height: 300px;
+    height: 60vh;
+  }
+  
+  header > div {
+    padding: 15px;
+  }
+  
+  header h1 {
+    font-size: 1.2rem;
+  }
+  
+  header p {
+    font-size: 0.75rem;
+  }
+  
+  header img {
+    max-width: 100px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+  }
+  
+  header img {
+    max-width: 200px;
+  }
+}
+
+/* ========================================
+   TIMELINE SECTION - GRID LAYOUT
+   ======================================== */
+
+/* Timeline section uses CSS Grid */
+section {
+  /* Use CSS Grid for card layout */
+  display: grid;
+  
+  /* Default: 3 columns on large screens */
+  grid-template-columns: repeat(3, 1fr);
+  
+  /* Gap between cards */
+  gap: 20px;
+  
+  /* Padding around the section */
+  padding: 40px 20px;
+  
+  /* Max width for better readability */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual timeline cards */
+section > div {
+  /* Card styling */
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 0;
+  
+  /* Add shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Smooth transition for hover effects */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Prevent content overflow */
+  overflow: hidden;
+}
+
+/* Hover effect on cards */
+section > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card images - displayed at the top */
+section > div > img {
+  /* Make image fill the card width */
+  width: 100%;
+  
+  /* Set consistent height for all images */
+  height: 200px;
+  
+  /* Crop images to fit nicely */
+  object-fit: cover;
+  
+  /* No margin or padding */
+  display: block;
+  
+  /* Smooth image scaling on hover */
+  transition: transform 0.3s ease;
+}
+
+/* Zoom effect on image when card is hovered */
+section > div:hover > img {
+  transform: scale(1.05);
+}
+
+/* Card headings */
+section h2 {
+  color: #0071c5;
+  font-size: 1.5rem;
+  margin: 15px 20px 10px 20px;
+}
+
+section h3 {
+  font-size: 1.2rem;
+  margin: 0 20px 10px 20px;
+  color: #333;
+}
+
+section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 20px 20px 20px;
+}
+
+/* Footer text */
+body > p {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablets - 2 columns */
+@media (max-width: 900px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px 15px;
+  }
+}
+
+/* Small tablets and large phones - still 2 columns but adjusted */
+@media (max-width: 768px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px 10px;
+  }
+  
+  section h2 {
+    font-size: 1.3rem;
+  }
+  
+  section h3 {
+    font-size: 1.1rem;
+  }
+  
+  section p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones - 1 column */
+@media (max-width: 480px) {
+  section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+  
+  section > div > img {
+    height: 150px;
+  }
+}
+
+/* ========================================
+   ORIENTATION-SPECIFIC STYLES
+   ======================================== */
+
+/* Portrait orientation - stack cards vertically */
+@media (orientation: portrait) {
+  /* On small screens in portrait, use single column */
+  @media (max-width: 768px) {
+    section {
+      grid-template-columns: 1fr;
+    }
+    
+    header {
+      height: 40vh;
+      min-height: 300px;
+    }
+  }
+  
+  /* On medium screens in portrait, use 2 columns */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* Landscape orientation - optimize for wider layout */
+@media (orientation: landscape) {
+  /* Small devices in landscape (like phones) */
+  @media (max-height: 500px) {
+    header {
+      height: 70vh;
+      min-height: 250px;
+    }
+    
+    header h1 {
+      font-size: 1.3rem;
+    }
+    
+    header p {
+      font-size: 0.8rem;
+    }
+    
+    section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Tablets in landscape */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Large screens in landscape */
+  @media (min-width: 1025px) {
+    section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ========================================
+   ULTRA-WIDE SCREENS
+   ======================================== */
+
+/* Very large screens - 4 columns for better use of space */
+@media (min-width: 1400px) {
+  section {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1400px;
+  }
+}
+
+/* Extra large screens - 4 columns with larger gaps */
+@media (min-width: 1800px) {
+  section {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1600px;
+  }
+}
